@@ -4,16 +4,17 @@ import pandas as pd
 import re
 from typing import List, Tuple
 
+
+
 st.set_page_config(page_title="Contractor Evaluation Bot", layout="centered")
 
 # ---------------------------- Constants and Setup ----------------------------
-
-RI_TABLE = {1: 0.00, 2: 0.00, 3: 0.58, 4: 0.90, 5: 1.12, 6: 1.24, 7: 1.32, 8: 1.41, 9: 1.45, 10: 1.49}
 
 DEFAULT_CRITERIA = ["TP", "AT", "S", "TC", "MC", "E", "ES"]
 DEFAULT_CONTRACTORS = [f"Contractor{i}" for i in range(1, 7)]
 
 # ---------------------------- Helper Functions ----------------------------
+
 
 def ensure_reciprocal(A: pd.DataFrame) -> pd.DataFrame:
     M = A.copy().astype(float)
@@ -47,7 +48,7 @@ def calculate_consistency(pairwise: pd.DataFrame, weights: np.ndarray) -> Tuple[
     lambda_max = float(np.mean(AW / weights))
     n = pairwise.shape[0]
     CI = (lambda_max - n) / (n - 1) if n > 1 else 0.0
-    RI = RI_TABLE.get(n, 1.49)
+    RI = 1.32
     CR = CI / RI if RI != 0 else 0.0
     
     # Convert CR to percentage (multiply by 100)
@@ -103,7 +104,21 @@ We'll evaluate contractors using **AHP** to calculate criteria weights and then 
 - ⿧ **ES** – Environmental Sustainability (eco-friendly practices)
 
 ⚖ **AHP Stage**  
-Please enter all **21 pairwise comparison values** for the 7 criteria separated by commas.
+Please enter all **21 pairwise comparison values** for the 7 criteria 
+Please enter all 21 pairwise comparison values for the 7 criteria separated by commas in the following order:
+
+TP vs AT, TP vs S, TP vs TC, TP vs MC, TP vs E, TP vs ES
+
+AT vs S, AT vs TC, AT vs MC, AT vs E, AT vs ES
+
+S vs TC, S vs MC, S vs E, S vs ES
+
+TC vs MC, TC vs E, TC vs ES
+
+MC vs E, MC vs ES
+
+E vs ES
+
 """
 
     # Handle user AHP input for pairwise comparison
