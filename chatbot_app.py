@@ -95,13 +95,13 @@ def handle_user_message(text: str):
 We'll evaluate contractors using **AHP** to calculate criteria weights and then apply **TOPSIS** to select the best contractor.
 
 🏗 **The 7 Evaluation Criteria:**
-- ⿡ **TP** – Time Performance (ability to complete work on schedule)
-- ⿢ **AT** – Technical Ability (technology, skills, and methods used)
+- ⿡ **TP** – Tender Price (overall project cost and financial competitiveness)
+- ⿢ **AT** – Accomplishment Time (ability to complete work on schedule)
 - ⿣ **S** – Safety (safety management and accident prevention)
-- ⿤ **TC** – Total Cost (overall project cost and financial competitiveness)
+- ⿤ **TC** – Technical Capability (technology, resources, and engineering quality)
 - ⿥ **MC** – Management Capability (organization, supervision, coordination)
 - ⿦ **E** – Experience (previous relevant project experience)
-- ⿧ **ES** – Environmental Sustainability (eco-friendly practices)
+- ⿧ **ES** – Economic Status (financial stability and economic strength)
 
 ⚖ **AHP Stage**  
 Please enter all **21 pairwise comparison values** for the 7 criteria 
